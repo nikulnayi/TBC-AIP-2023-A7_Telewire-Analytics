@@ -32,7 +32,7 @@ with st.sidebar:
     st.header("Upload Data file here for prediction")
 
     file = st.file_uploader("", type=["csv"])
-    options = ["Company", "Data Science", "Data Decsription"]
+    options = ["Company Management", "Data Science", "Uploaded Data"]
     selected_option = st.radio("Who is viewing?", options)
 col1,col2 = st.columns([0.75,6])
 
@@ -48,7 +48,7 @@ if file is not None:
     df['Unusual'] = prediction  
         
 
-    if selected_option == 'Company':
+    if selected_option == 'Company Management':
         with st.spinner('Processing...'):
             
             # Once the computation is done, remove the spinner
@@ -209,9 +209,9 @@ if file is not None:
             # Display the box plot in Streamlit
             st.pyplot(fig)
 
-    if selected_option == 'Data Decsription':
+    if selected_option == 'Uploaded Data':
         with st.spinner('Processing...'):
             datatable = df.drop('Unusual',axis=1)
-            st.markdown("### Summary of uploaded data")
+            st.markdown("### Overview of uploaded data")
             st.markdown("The following table gives you a quick view of the uploaded data.")
             st.dataframe(datatable)# will display the table
